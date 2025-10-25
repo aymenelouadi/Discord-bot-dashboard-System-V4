@@ -1,0 +1,669 @@
+<style>
+  /* Discord Color Palette */
+:root {
+  --discord-bg-dark: #2c2f33;
+  --discord-bg-darker: #23272a;
+  --discord-bg-light: #36393f;
+  --discord-blurple: #5865f2;
+  --discord-blurple-hover: #4752c4;
+  --discord-green: #3ba55d;
+  --discord-green-hover: #2d7d46;
+  --discord-text: #ffffff;
+  --discord-text-muted: #b9bbbe;
+  --discord-accent: #7289da;
+  --discord-shadow: rgba(0, 0, 0, 0.2);
+  --discord-shadow-lg: rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   HEADER STYLES
+============================================ */
+
+/* الهيدر الرئيسي */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, var(--discord-blurple) 0%, var(--discord-accent) 100%);
+  color: var(--discord-text);
+  padding: 0 25px;
+  height: 65px;
+  font-family: 'Whitney', 'Source Sans Pro', sans-serif;
+  box-shadow: 0 4px 16px var(--discord-shadow-lg);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.main-header:hover {
+  box-shadow: 0 6px 20px var(--discord-shadow-lg);
+}
+
+/* شعار الموقع */
+.main-header .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--discord-text);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.main-header .logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-mini {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logo-lg {
+  font-weight: 700;
+  font-size: 24px;
+  margin-left: 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* شريط التنقل */
+.navbar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+/* زر toggle */
+.sidebar-toggle {
+  cursor: pointer;
+  font-size: 22px;
+  margin-right: 20px;
+  color: var(--discord-text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.sidebar-toggle:active {
+  transform: rotate(90deg) scale(0.95);
+}
+
+/* القائمة اليمنى */
+.navbar-custom-menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar-custom-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-custom-menu li {
+  position: relative;
+  margin-left: 15px;
+}
+
+/* رابط المستخدم */
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--discord-text);
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+.dropdown-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* صورة المستخدم */
+.user-image {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.dropdown-toggle:hover .user-image {
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* Dropdown المستخدم */
+.user-menu .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--discord-bg-light);
+  color: var(--discord-text);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--discord-shadow-lg);
+  min-width: 180px;
+  display: none;
+  z-index: 1001;
+  border: 2px solid var(--discord-bg-dark);
+  overflow: hidden;
+  animation: dropdownSlide 0.2s ease;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-menu:hover .dropdown-menu {
+  display: block;
+}
+
+.user-footer {
+  padding: 12px;
+  background: var(--discord-bg-darker);
+}
+
+.user-footer a {
+  display: block;
+  text-align: center;
+  background: var(--discord-blurple);
+  color: var(--discord-text);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.user-footer a:hover {
+  background: var(--discord-blurple-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+/* ============================================
+   CONTENT WRAPPER & PAGE STYLES
+============================================ */
+
+/* Global Styles */
+body {
+  background: linear-gradient(135deg, var(--discord-bg-darker) 0%, var(--discord-bg-dark) 100%);
+  color: var(--discord-text);
+  font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  padding-top: 65px;
+}
+
+.content-wrapper {
+  background: transparent !important;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Content Header */
+.content-header {
+  background: var(--discord-bg-light);
+  padding: 25px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 16px var(--discord-shadow-lg);
+}
+
+.content-header h1 {
+  color: var(--discord-text);
+  font-weight: 700;
+  margin: 0;
+  font-size: 28px;
+}
+
+.content-header h1 small {
+  color: var(--discord-text-muted);
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.breadcrumb {
+  background: transparent;
+  padding: 8px 0;
+  margin-bottom: 0;
+}
+
+.breadcrumb li a {
+  color: var(--discord-blurple);
+  transition: color 0.2s ease;
+}
+
+.breadcrumb li a:hover {
+  color: var(--discord-blurple-hover);
+  text-decoration: none;
+}
+
+/* Server Cards */
+.box {
+  background: var(--discord-bg-light);
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px var(--discord-shadow);
+  margin-bottom: 25px;
+  height: 100%;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--discord-shadow-lg);
+}
+
+.box-header {
+  background: var(--discord-bg-darker);
+  padding: 20px;
+  border-bottom: 2px solid var(--discord-bg-dark);
+}
+
+.box-header .fa-crown {
+  color: #faa61a;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.box-title {
+  color: var(--discord-text);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.box-body {
+  padding: 30px 20px;
+  background: var(--discord-bg-light);
+}
+
+.box-body img {
+  border: 4px solid var(--discord-bg-darker);
+  transition: all 0.3s ease;
+}
+
+.box-body img:hover {
+  border-color: var(--discord-blurple);
+  transform: scale(1.05);
+}
+
+.box-footer {
+  background: var(--discord-bg-darker);
+  padding: 15px 20px;
+  border-top: 2px solid var(--discord-bg-dark);
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px 20px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: var(--discord-blurple);
+  color: var(--discord-text);
+}
+
+.btn-primary:hover {
+  background: var(--discord-blurple-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+.btn-success {
+  background: var(--discord-green);
+  color: var(--discord-text);
+}
+
+.btn-success:hover {
+  background: var(--discord-green-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 165, 93, 0.4);
+}
+
+/* Warning Box (No Servers) */
+.box-warning {
+  background: var(--discord-bg-light);
+  border-left: 4px solid #faa61a;
+}
+
+.box-warning .box-header {
+  background: rgba(250, 166, 26, 0.1);
+}
+
+.box-warning .box-title {
+  color: #faa61a;
+}
+
+.box-warning .box-body {
+  color: var(--discord-text-muted);
+  padding: 25px;
+  font-size: 15px;
+}
+
+/* Grid Layout */
+.row {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.col-md-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
+
+/* Tablets وشاشات متوسطة */
+@media (max-width: 1200px) {
+  .col-md-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* أجهزة لوحية صغيرة */
+@media (max-width: 991px) {
+  .main-header {
+    padding: 0 15px;
+    height: 60px;
+  }
+
+  .logo-lg {
+    font-size: 20px;
+  }
+
+  .sidebar-toggle {
+    margin-right: 15px;
+  }
+}
+
+/* هواتف أفقية */
+@media (max-width: 768px) {
+  .col-md-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .main-header {
+    padding: 0 12px;
+  }
+
+  .logo-lg {
+    display: none;
+  }
+
+  .logo-mini {
+    font-size: 18px;
+  }
+
+  .dropdown-toggle span {
+    display: none !important;
+  }
+
+  .user-image {
+    margin-right: 0;
+    width: 35px;
+    height: 35px;
+  }
+
+  .content-header {
+    padding: 20px;
+  }
+  
+  .content-header h1 {
+    font-size: 24px;
+  }
+  
+  .box-header {
+    padding: 15px;
+  }
+  
+  .box-body {
+    padding: 25px 15px;
+  }
+  
+  .box-title {
+    font-size: 16px;
+  }
+}
+
+/* هواتف عمودية */
+@media (max-width: 480px) {
+  body {
+    padding-top: 60px;
+  }
+
+  .main-header {
+    height: 55px;
+    padding: 0 10px;
+  }
+
+  .logo-mini {
+    font-size: 16px;
+  }
+
+  .sidebar-toggle {
+    font-size: 20px;
+    margin-right: 10px;
+    padding: 6px 10px;
+  }
+
+  .user-image {
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+
+  .content-wrapper {
+    padding: 10px;
+  }
+  
+  .content-header {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .content-header h1 {
+    font-size: 20px;
+  }
+  
+  .content-header h1 small {
+    display: block;
+    margin-left: 0;
+    margin-top: 5px;
+  }
+  
+  .box-body img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .user-menu .dropdown-menu {
+    min-width: 150px;
+    right: -10px;
+  }
+
+  .user-footer {
+    padding: 10px;
+  }
+
+  .user-footer a {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
+
+/* هواتف صغيرة جداً */
+@media (max-width: 360px) {
+  .main-header {
+    height: 50px;
+  }
+
+  .logo-mini {
+    font-size: 14px;
+  }
+
+  .sidebar-toggle {
+    font-size: 18px;
+  }
+
+  .user-image {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.box {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.box:nth-child(1) { animation-delay: 0.1s; }
+.box:nth-child(2) { animation-delay: 0.2s; }
+.box:nth-child(3) { animation-delay: 0.3s; }
+.box:nth-child(4) { animation-delay: 0.4s; }
+
+/* ============================================
+   SCROLLBAR STYLING
+============================================ */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--discord-bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--discord-bg-light);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--discord-accent);
+}
+
+/* ============================================
+   UTILITY CLASSES
+============================================ */
+
+.hidden-xs {
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+</style>
+
+<header class="main-header">
+  <!-- Logo -->
+  <a href="/" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>DJs</b></span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>Discord JS</b></span>
+  </a>
+
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top">
+    <!-- Sidebar toggle button-->
+    <a class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <!-- Navbar Right Menu -->
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="<%= user.displayAvatar %>" class="user-image" alt="User Image" />
+            <span class="hidden-xs"><%= user.tag %></span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- Menu Footer-->
+            <li class="user-footer" style="min-width: auto !important">
+              <div>
+                <a href="/logout" class="btn btn-default btn-flat btn-block">Sign out</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

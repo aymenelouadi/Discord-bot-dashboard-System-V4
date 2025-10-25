@@ -1,0 +1,391 @@
+<style>
+    /* Main Sidebar Styles */
+.main-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+.main-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.main-sidebar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.main-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.main-sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* User Panel */
+.user-panel {
+    padding: 25px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-panel .image {
+    float: none;
+    margin: 0;
+}
+
+.user-panel .image img {
+    width: 55px;
+    height: 55px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.user-panel .image img:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.user-panel .info {
+    float: none;
+    margin: 0;
+}
+
+.user-panel .info p {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Form */
+.sidebar-form {
+    padding: 20px 15px;
+    margin: 0;
+}
+
+.sidebar-form .input-group {
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.sidebar-form .form-control {
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    color: #333;
+    padding: 12px 20px;
+    border-radius: 25px 0 0 25px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-form .form-control:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    outline: none;
+}
+
+.sidebar-form .form-control::placeholder {
+    color: #999;
+}
+
+.sidebar-form .btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 0 25px 25px 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar-form .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-2px);
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu .header {
+    padding: 20px 15px 10px 15px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.sidebar-menu > li {
+    position: relative;
+}
+
+.sidebar-menu > li > a,
+.sidebar-menu > li > ul > li > a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-menu > li > a::before,
+.sidebar-menu > li > ul > li > a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: #ffffff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sidebar-menu > li > a:hover,
+.sidebar-menu > li > ul > li > a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    padding-left: 25px;
+}
+
+.sidebar-menu > li > a:hover::before,
+.sidebar-menu > li > ul > li > a:hover::before {
+    transform: translateX(0);
+}
+
+.sidebar-menu > li.active > a,
+.sidebar-menu > li > ul > li.active > a {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    padding-left: 25px;
+}
+
+.sidebar-menu > li.active > a::before,
+.sidebar-menu > li > ul > li.active > a::before {
+    transform: translateX(0);
+}
+
+.sidebar-menu i {
+    margin-left: 15px;
+    font-size: 18px;
+    min-width: 25px;
+    text-align: center;
+}
+
+.sidebar-menu span {
+    font-size: 15px;
+}
+
+/* Treeview */
+.sidebar-menu .treeview {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu .treeview > li {
+    margin: 0;
+}
+
+.sidebar-menu .treeview > li > a {
+    padding-right: 35px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-sidebar {
+        width: 100%;
+        transform: translateX(100%);
+    }
+    
+    .main-sidebar.sidebar-open {
+        transform: translateX(0);
+    }
+    
+    .user-panel {
+        padding: 20px 15px;
+    }
+    
+    .user-panel .image img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .sidebar-form {
+        padding: 15px;
+    }
+    
+    .sidebar-menu .header {
+        padding: 15px 15px 8px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-panel {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .user-panel .image img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .user-panel .info p {
+        font-size: 14px;
+    }
+    
+    .sidebar-form .form-control {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .sidebar-form .btn {
+        padding: 10px 15px;
+    }
+    
+    .sidebar-menu > li > a,
+    .sidebar-menu > li > ul > li > a {
+        padding: 12px 15px;
+    }
+    
+    .sidebar-menu i {
+        font-size: 16px;
+        margin-left: 10px;
+    }
+    
+    .sidebar-menu span {
+        font-size: 14px;
+    }
+}
+
+/* Animation for menu items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.sidebar-menu > li {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.sidebar-menu > li:nth-child(1) { animation-delay: 0.05s; }
+.sidebar-menu > li:nth-child(2) { animation-delay: 0.1s; }
+.sidebar-menu > li:nth-child(3) { animation-delay: 0.15s; }
+.sidebar-menu > li:nth-child(4) { animation-delay: 0.2s; }
+.sidebar-menu > li:nth-child(5) { animation-delay: 0.25s; }
+
+/* Toggle button for mobile (optional) */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: block;
+    }
+}
+</style>
+
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="<%= user.displayAvatar %>" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p><%= user.username %></p>
+            </div>
+        </div>
+        <!-- search form -->
+        <form action="/selector" method="get" class="sidebar-form">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search for servers...">
+            <span class="input-group-btn">
+                <button type="submit" id="search-btn" class="btn btn-flat">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        </form>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">SERVERS MANAGEMENT</li>
+            <li class="treeview menu-open">
+                <li><a href="/selector"><i class="fa fa-home"></i> <span>Selector</span></a></li>
+            </li>
+        </ul>
+        <% if (locals.guild){ %>
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">CONFIGURATION</li>
+            <li class="treeview menu-open">
+                <li><a href="/manage/<%= guild.id %>/basic"><i class="fa fa-gear"></i> <span>Basic</span></a></li>
+                <li><a href="/manage/<%= guild.id %>/greeting"><i class="fa fa-bullhorn"></i> <span>Greeting</span></a></li>
+            </li>
+        </ul>
+        <% } %>
+    </section>
+    <!-- /.sidebar -->
+</aside>
+
+<script>
+    $(document).ready(function() {
+        // get current URL path and assign 'active' class
+        let pathname = window.location.pathname;
+        $(`.sidebar-menu > li > a[href="${pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > ul > li > a[href="${window.location.pathname}"]`).parent().addClass("active");
+        $(`.sidebar-menu > li > a[href="/${window.location.pathname.split("/")[1]}/"]`).parent().addClass("active");
+    });
+</script>

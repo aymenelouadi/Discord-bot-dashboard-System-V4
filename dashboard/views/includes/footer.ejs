@@ -1,0 +1,286 @@
+<style>
+  /* Main Footer Styles */
+.main-footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 25px 30px;
+    border-top: 3px solid #667eea;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Decorative background effect */
+.main-footer::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.main-footer::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -10%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(118, 75, 162, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Left side - Main text */
+.main-footer strong {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Right side - Version info */
+.main-footer .pull-right {
+    float: none;
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.main-footer .pull-right:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Links styling */
+.main-footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+.main-footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
+}
+
+.main-footer a:hover {
+    color: #8b9cf7;
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.main-footer a:hover::after {
+    width: 100%;
+}
+
+/* Version badge */
+.main-footer .pull-right b {
+    color: #ffffff;
+    font-weight: 700;
+    margin-left: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Heart icon animation */
+.main-footer .fa-heart {
+    color: #e74c3c;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 16px;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    10%, 30% {
+        transform: scale(1.1);
+    }
+    20%, 40% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design for Tablets */
+@media (max-width: 991px) {
+    .main-footer {
+        padding: 20px 25px;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .main-footer strong {
+        order: 2;
+        text-align: center;
+        font-size: 13px;
+        min-width: 100%;
+    }
+    
+    .main-footer .pull-right {
+        order: 1;
+        margin-bottom: 15px;
+    }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 20px 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-footer strong {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+    
+    .main-footer .pull-right {
+        width: 100%;
+        text-align: center;
+        padding: 12px 15px;
+        margin-bottom: 12px;
+    }
+    
+    .main-footer .pull-right b {
+        display: block;
+        margin: 5px 0 0 0;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+    .main-footer {
+        padding: 15px 10px;
+    }
+    
+    .main-footer strong {
+        font-size: 12px;
+        line-height: 1.8;
+    }
+    
+    .main-footer .pull-right {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+    
+    .main-footer a {
+        display: inline-block;
+        margin: 2px 0;
+    }
+}
+
+/* Hidden elements on mobile */
+@media (max-width: 767px) {
+    .main-footer .hidden-xs {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Print styles */
+@media print {
+    .main-footer {
+        background: #fff;
+        color: #000;
+        border-top: 2px solid #000;
+        box-shadow: none;
+    }
+    
+    .main-footer::before,
+    .main-footer::after {
+        display: none;
+    }
+    
+    .main-footer a {
+        color: #000;
+        text-decoration: underline;
+    }
+}
+
+/* Accessibility improvements */
+.main-footer a:focus {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+    background: rgba(102, 126, 234, 0.2);
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+    .main-footer {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-top-color: #667eea;
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+.main-footer * {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Additional styling for better visual hierarchy */
+.main-footer strong::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #667eea;
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+</style>
+
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <a target="_blank" href="https://github.com/Androz2091/AtlantaBot"> <b>Atlanta Dashboard</b> Version 1.0.0-beta</a>
+  </div>
+  <strong
+    >This website uses <a href="https://adminlte.io">AdminLTE</a> and <a href="https://boostrap.com">Bootstrap</a>. Made
+    with <i class="fa fa-heart"></i> by <a target="_blank" href="https://github.com/Androz2091">Androz2091</a>.</strong
+  >
+</footer>

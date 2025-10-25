@@ -1,0 +1,5 @@
+entrypoint = "bot.js"
+run = ["sh", "-c", "npm install && node bot.js"]
+
+[nix]
+channel = "stable-22_11"
