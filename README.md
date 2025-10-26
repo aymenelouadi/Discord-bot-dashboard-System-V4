@@ -31,6 +31,15 @@ npm install
 - Rename `.env.example` to `.env` and fill the values
 - Optionally edit `config.js`
 - Type `npm run start` to start the bot
+## 
+If you will host the project on a host, follow these steps
+<br>
+1. add project in files .zip
+2. decompress it
+3. rename `.env.example` to `.env` and fill the values
+4. edit `config.js`
+5. go to startup and change docker image to node.js v20 after that go to main file and add this bot.js
+6. finally start bot
 
 If you need any additional help [join support server discord](https://discord.gg/mFEehCPKEW)
 
