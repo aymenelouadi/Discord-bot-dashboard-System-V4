@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/saiteja-"><img src="https://res.cloudinary.com/djoo9ukvd/image/upload/v1761418439/discord_images/mjbnatclqrl0kwyqriak.png" height="200" alt="Code Nexus | System V4"></a>
+  <a href="https://discord.gg/mFEehCPKEW"><img src="https://res.cloudinary.com/djoo9ukvd/image/upload/v1761418439/discord_images/mjbnatclqrl0kwyqriak.png" height="200" alt="Code Nexus | System V4"></a>
   <br>
     Code Nexus | System V4
   <br>
