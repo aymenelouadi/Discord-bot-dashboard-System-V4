@@ -8,12 +8,6 @@ const { getSettings } = require("@schemas/Guild");
 module.exports = async (client) => {
   client.logger.success(`Logged in as ${client.user.tag}! (${client.user.id})`);
 
-  // Initialize Music Manager
-  if (client.config.MUSIC.ENABLED) {
-    client.musicManager.connect(client.user.id);
-    client.logger.success("Music Manager initialized");
-  }
-
   // Initialize Giveaways Manager
   if (client.config.GIVEAWAYS.ENABLED) {
     client.logger.log("Initializing giveaways manager...");
